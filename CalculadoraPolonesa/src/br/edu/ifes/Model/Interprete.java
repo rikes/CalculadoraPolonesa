@@ -6,6 +6,7 @@
 
 package br.edu.ifes.Model;
 
+import br.edu.ifes.Model.ChainfCalculator;
 import java.util.LinkedList;
 
 /**
@@ -13,13 +14,15 @@ import java.util.LinkedList;
  * @author Henrique
  */
 public class Interprete {
-    private LinkedList<Integer> monte = new LinkedList<Integer>();
-    private ChainfCalculator pipeline = new ChainfCalculator();
-    private String operators = "+-/*";
+    private LinkedList<Double> monte = new LinkedList<Double>();
+    private ChainfCalculator calculator = new ChainfCalculator();
+    private final String operators = "+-/*";
 
     
     public void imprimirMonte(){
-        for (int i=0; i<monte.size(); i++) System.out.println(monte.get(i));
+        for (Double monte1 : monte) {
+            System.out.println(monte1);
+        }
     }
     
     public boolean isOperator(char c){
@@ -30,20 +33,18 @@ public class Interprete {
     }
     
     
-    public int solve(String f){
+    public Double solve(String f){
         String buffer = "";
         for (int i=0; i<f.length(); i++){
             
             if (isOperator(f.charAt(i))){
-            	int r = pipeline.dropInPipeline(monte.removeFirst(), monte.removeFirst(), f.charAt(i));
+            	double r = calculator.baixa(monte.removeFirst(), monte.removeFirst(), f.charAt(i));
                 monte.add(r);
             }
-            
             else if (f.charAt(i) == ' '){
-            	if (!buffer.isEmpty()) monte.add(Integer.parseInt(buffer));
+            	if (!buffer.isEmpty()) monte.add(Double.parseDouble(buffer));
                 buffer = "";
             }
-            
             else buffer+=f.charAt(i);
         }
         

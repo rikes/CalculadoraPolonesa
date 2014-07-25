@@ -15,8 +15,12 @@ public class Subtracao extends AbsOperador{
         super('-');
     }
 
-    public int make(int a, int b, char operador) {
-        if (operador == meuOperador) return (a-b);
-        else return getProximo().make(a, b, operador);
+    public double calcular(double a, double b, char operador) {
+        if (operador == meuOperador){
+            return (a-b);
+        }    
+        else{
+            return getProximo().calcular(a, b, operador);
+        }
     }
 }

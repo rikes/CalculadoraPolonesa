@@ -12,21 +12,20 @@ package br.edu.ifes.Model;
  */
 public abstract class AbsOperador{
     
-    private Operador proximo = null;
+    private AbsOperador proximo = null;
     public char meuOperador;
     
     public AbsOperador(char op){
         this.meuOperador = op;
     }
-    
-    
-    public Operador getProximo(){
+   
+    public AbsOperador getProximo(){
        return proximo;
     }
     
-
-    public void setProximo(Operador o) {
+    public void setProximo(AbsOperador o) {
         this.proximo = o;
     }
     
+    public abstract double calcular(double a, double b, char operador);
 }

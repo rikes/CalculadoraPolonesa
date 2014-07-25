@@ -10,9 +10,8 @@ package br.edu.ifes.Model;
  *
  * @author Henrique
  */
-public interface Operador {
-    public int make(int a, int b, char operador);
-    
-    public void setProximo(Operador op);
-    public Operador getProximo();
+public class p {
+    public void teste(){
+        System.out.println("Teste");
+    }
 }

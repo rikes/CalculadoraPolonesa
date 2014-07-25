@@ -11,18 +11,19 @@ package br.edu.ifes.Model;
  * @author Henrique
  */
 public class ChainfCalculator {
-    public Operador operador;
+    public AbsOperador operador;
+    
     public ChainfCalculator(){
-        operador = new Somar();
-        operador m = new Multiplicar();
-        operador s = new Subtrair();
-        operador d = new Dividir();
+        operador = new Soma();
+        AbsOperador m = new Multiplicacao();
+        AbsOperador sub = new Subtracao();
+        AbsOperador d = new Divisao();
         operador.setProximo(m);
-        m.setProximo(s);
-        s.setProximo(d);
+        m.setProximo(sub);
+        sub.setProximo(d);
     }
     
-    public int dropInPipeline(int a, int b, char operacao){
-        return pipeline.make(a, b, operacao);
+    public double baixa(double a, double b, char operacao){
+        return operador.calcular(a, b, operacao);
     }
 }
